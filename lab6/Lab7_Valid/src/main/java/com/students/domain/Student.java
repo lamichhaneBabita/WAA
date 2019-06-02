@@ -13,25 +13,32 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 public class Student {
-	
-	private Integer id;
-	
- 	private String firstName = null;
-	
- 	private  String lastName  = null;
-	
- 	private String email = null;
-	
- 	private String gender = null;
-	
-    private Date birthday;
- 
+
+	private int id;
+
+	@NotEmpty @Size(min=4, max=50, message="{Size.Student.name.validation}")
+	private String firstName = null;
+
+	@NotEmpty(message="Enter the last name")
+	private  String lastName  = null;
+
+	@NotEmpty @Email
+	private String email = null;
+
+	@NotEmpty
+	private String gender = null;
+
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull @Past
+	private Date birthday;
+
+	@Valid
 	private Phone phone;
 
-  	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -69,8 +76,8 @@ public class Student {
 	}
 	public void setPhone(Phone phone) {
 		this.phone = phone;
-	}	
-	   	
-	   
+	}
+
+
 
 }
