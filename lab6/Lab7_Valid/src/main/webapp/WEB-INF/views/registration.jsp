@@ -14,7 +14,7 @@
 
 <h1>Registration Form</h1><br />
 
-<form:form  method="post" commandName="student" >
+<form:form  method="post" modelAttribute="student" action="add">
 
     <table>
 
